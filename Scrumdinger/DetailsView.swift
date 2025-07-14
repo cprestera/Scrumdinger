@@ -45,7 +45,7 @@ struct DetailsView: View {
         }
         .navigationTitle(scrum.title)
         .toolbar {
-            Button("edit") {
+            Button("Edit") {
                 isPresentingEditView = true
             }
         }
