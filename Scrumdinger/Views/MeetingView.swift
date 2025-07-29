@@ -9,11 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct MeetingView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @Binding var scrum: DailyScrum
+    
     var body: some View {
         VStack {
+            RoundedRectangle(cornerRadius: 16.0)
+                .fill(scrum.theme.mainColor)
             ProgressView(value: 5, total: 15)
             HStack {
                 VStack(alignment: .leading) {
@@ -43,10 +44,13 @@ struct MeetingView: View {
             }
         }
         .padding()
+        .foregroundColor(scrum.theme.accentColor)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    MeetingView()
+    @Previewable @State var scrum = DailyScrum.sampleData[0]
+    MeetingView(scrum: $scrum)
         .modelContainer(for: Item.self, inMemory: true)
 }

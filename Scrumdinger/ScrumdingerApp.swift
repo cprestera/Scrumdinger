@@ -9,8 +9,7 @@ import SwiftUI
 
 @main
 struct ScrumdingerApp: App {
-    // Tutorial claims this works, but throw error
-    @State private var scrums: DailyScrum.sampleData
+    @State private var scrums = DailyScrum.sampleData
     
     var body: some Scene {
         WindowGroup {
