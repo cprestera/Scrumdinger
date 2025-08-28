@@ -26,6 +26,12 @@ struct ScrumsView: View {
                 .accessibilityLabel("New scrum")
             }
         }
+        .onAppear(perform: {
+            print("Appear!")
+        })
+        .onDisappear(perform: {
+            print("Disappear!")
+        })
     }
 }
 
