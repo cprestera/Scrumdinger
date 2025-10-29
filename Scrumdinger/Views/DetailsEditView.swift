@@ -9,7 +9,10 @@ import SwiftUI
 
 struct DetailsEditView: View {
     @Binding var scrum: DailyScrum
+    let saveEdits: (DailyScrum) -> Void
+    
     @State private var attendeeName = ""
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         Form {
@@ -52,10 +55,23 @@ struct DetailsEditView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done") {
+                    saveEdits(scrum)
+                    dismiss()
+                }
+            }
+        }
     }
 }
 
 #Preview {
     @Previewable @State var scrum = DailyScrum.sampleData[0]
-    DetailsEditView(scrum: $scrum)
+    DetailsEditView(scrum: $scrum, saveEdits: { _ in })
 }
