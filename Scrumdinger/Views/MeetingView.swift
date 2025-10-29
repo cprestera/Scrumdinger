@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct MeetingView: View {
-    @Binding var scrum: DailyScrum
+    @Environment(\.modelContext) private var context
+    let scrum: DailyScrum
     @State var scrumTimer = ScrumTimer()
     
     var body: some View {
@@ -43,11 +44,11 @@ struct MeetingView: View {
         scrumTimer.stopScrum()
         let newHistory = History(attendees: scrum.attendees)
         scrum.history.insert(newHistory, at: 0)
+        try? context.save()
     }
 }
 
 #Preview {
-    @Previewable @State var scrum = DailyScrum.sampleData[0]
-    MeetingView(scrum: $scrum)
-        .modelContainer(for: Item.self, inMemory: true)
+    let scrum = DailyScrum.sampleData[0]
+    MeetingView(scrum: scrum)
 }
