@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC92D0412ECA709200323B94 /* TranscriptionKit in Frameworks */ = {isa = PBXBuildFile; productRef = EC92D0402ECA709200323B94 /* TranscriptionKit */; };
 		ECE6FC9E2D99ADE2004A6BD7 /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECE6FC9D2D99ADE2004A6BD7 /* ThemeKit */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC92D0412ECA709200323B94 /* TranscriptionKit in Frameworks */,
 				ECE6FC9E2D99ADE2004A6BD7 /* ThemeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +120,7 @@
 			name = Scrumdinger;
 			packageProductDependencies = (
 				ECE6FC9D2D99ADE2004A6BD7 /* ThemeKit */,
+				EC92D0402ECA709200323B94 /* TranscriptionKit */,
 			);
 			productName = Scrumdinger;
 			productReference = EC0AD3F82D9264AE00186DE6 /* Scrumdinger.app */;
@@ -203,6 +206,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				ECE6FC9C2D99ADE2004A6BD7 /* XCLocalSwiftPackageReference "ThemeKit" */,
+				EC92D03F2ECA709200323B94 /* XCLocalSwiftPackageReference "../../../Downloads/DrawingTheTimerView/Complete/TutorialResources/TranscriptionKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EC0AD3F92D9264AE00186DE6 /* Products */;
@@ -408,6 +412,10 @@
 				DEVELOPMENT_TEAM = KJA3E8TPD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Scrumdinger;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe the meeting. Audio recordings are discarded after transcription.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can view a text transcription of your meeting in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -437,6 +445,10 @@
 				DEVELOPMENT_TEAM = KJA3E8TPD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Scrumdinger;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe the meeting. Audio recordings are discarded after transcription.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can view a text transcription of your meeting in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -565,6 +577,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		EC92D03F2ECA709200323B94 /* XCLocalSwiftPackageReference "../../../Downloads/DrawingTheTimerView/Complete/TutorialResources/TranscriptionKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../../Downloads/DrawingTheTimerView/Complete/TutorialResources/TranscriptionKit;
+		};
 		ECE6FC9C2D99ADE2004A6BD7 /* XCLocalSwiftPackageReference "ThemeKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ThemeKit;
@@ -572,6 +588,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EC92D0402ECA709200323B94 /* TranscriptionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TranscriptionKit;
+		};
 		ECE6FC9D2D99ADE2004A6BD7 /* ThemeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ThemeKit;

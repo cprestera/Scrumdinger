@@ -7,12 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import TranscriptionKit
 
 struct MeetingView: View {
     @Environment(\.modelContext) private var context
     let scrum: DailyScrum
     @State var scrumTimer = ScrumTimer()
     @Binding var errorWrapper: ErrorWrapper?
+    @State var speechRecognizer = SpeechRecognizer()
+    @State private var isRecording = false
     
     var body: some View {
         ZStack {
@@ -20,8 +23,7 @@ struct MeetingView: View {
                 .fill(scrum.theme.mainColor)
             VStack {
                 MeetingHeaderView(secondsElapsed: scrumTimer.secondsElapsed, secondsRemaining: scrumTimer.secondsRemaining, theme: scrum.theme)
-                Circle()
-                    .strokeBorder(lineWidth: 24)
+                MeetingTimerView(speakers: scrumTimer.speakers, isRecording: isRecording, theme: scrum.theme)
                 MeetingFooterView(speakers: scrumTimer.speakers, skipAction: scrumTimer.skipSpeaker)
             }
         }
@@ -43,11 +45,16 @@ struct MeetingView: View {
     private func startScrum() {
         scrumTimer.reset(lengthInMinutes: scrum.lengthInMinutes, attendeeNames: scrum.attendees.map { $0.name })
         scrumTimer.startScrum()
+        isRecording = true
+        speechRecognizer.resetTranscript()
+        speechRecognizer.startTranscribing()
     }
     
     private func endScrum() throws {
         scrumTimer.stopScrum()
-        let newHistory = History(attendees: scrum.attendees)
+        speechRecognizer.stopTranscribing()
+        isRecording = false
+        let newHistory = History(attendees: scrum.attendees, transcript: speechRecognizer.transcript)
         scrum.history.insert(newHistory, at: 0)
         try context.save()
     }
